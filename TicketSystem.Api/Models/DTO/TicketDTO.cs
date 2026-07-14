@@ -1,18 +1,13 @@
 ﻿using TicketSystem.Api.Models.Enums;
 
-namespace TicketSystem.Api.Models
+namespace TicketSystem.Api.Models.DTO
 {
-	public class Ticket
+	public class TicketDTO
 	{
 		public int Id { get; set; }
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public TicketStatus Status { get; set; }
 		public TicketPriority Priority { get; set; }
-
-		public DateTime CreatedAt { get; set; }
-		public DateTime? UpdatedAt { get; set; }
-		public int CreatedByUserId { get; set; }
-		public int? AssignedToUserId { get; set; }
 	}
 }
