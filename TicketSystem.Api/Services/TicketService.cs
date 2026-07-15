@@ -1,28 +1,38 @@
-﻿using TicketSystem.Api.Models.DTO;
+﻿using Microsoft.EntityFrameworkCore;
+using TicketSystem.Api.Data;
+using TicketSystem.Api.Models;
+using TicketSystem.Api.Models.DTO;
 using TicketSystem.Api.Services.Abstractions;
 
 namespace TicketSystem.Api.Services
 {
 	public class TicketService : ITicketService
 	{
-		public Task<bool> DeleteTicketByIDAsync(int id)
+		private readonly AppDBContext _context;
+		public TicketService(AppDBContext context)
 		{
-			throw new NotImplementedException();
+			_context = context;
+		}
+		public async Task<bool> DeleteTicketByIDAsync(int id)
+		{
+			var ticket = await _context.Tickets.FindAsync(id);
+			if (ticket == null) return false;
+
+			_context.Tickets.Remove(ticket);
+			return (await _context.SaveChangesAsync()) > 0;
 		}
 
-		public Task<IEnumerable<ReadTicketDTO>> GetallTicketsAsync()
-		{
-			throw new NotImplementedException();
-		}
+		public async Task<List<Ticket>> GetAllTicketsAsync() => await _context.Tickets.ToListAsync();
 
-		public Task<ReadTicketDTO> GetTicketByIdAsync(int id)
-		{
-			throw new NotImplementedException();
-		}
+		public async Task<Ticket?> GetTicketByIdAsync(int id) => await _context.Tickets.FindAsync(id);
 
-		public Task<bool> UpdateTicketByIDAsync(int id, ReadTicketDTO updatedTicket)
+		public async Task<bool> UpdateTicketByIDAsync(int id, Ticket updatedTicket)
 		{
-			throw new NotImplementedException();
+			var ticket = await _context.Tickets.FindAsync(id);
+			if (ticket == null) return false;
+
+			_context.Entry(ticket).CurrentValues.SetValues(updatedTicket);
+			return (await _context.SaveChangesAsync()) > 0;
 		}
 	}
 }
