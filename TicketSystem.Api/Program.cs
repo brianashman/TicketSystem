@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using TicketSystem.Api.Data;
 using TicketSystem.Api.Services;
 using TicketSystem.Api.Services.Abstractions;
 
@@ -13,7 +15,7 @@ builder.Services.AddOpenApi();
 #region DI Container
 
 builder.Services.AddScoped<ITicketService, TicketService>();
-
+builder.Services.AddDbContext<AppDBContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 #endregion
 
 var app = builder.Build();
