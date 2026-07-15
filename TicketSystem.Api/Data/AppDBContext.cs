@@ -5,7 +5,7 @@ namespace TicketSystem.Api.Data
 {
 	public class AppDBContext: DbContext
 	{
-		AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
+		public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
 		{
 
 		}
