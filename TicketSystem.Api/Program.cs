@@ -1,3 +1,4 @@
+using Scalar.AspNetCore;
 using TicketSystem.Api.Services;
 using TicketSystem.Api.Services.Abstractions;
 
@@ -21,6 +22,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 	app.MapOpenApi();
+	app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
