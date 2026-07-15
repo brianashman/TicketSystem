@@ -1,6 +1,6 @@
 ﻿using TicketSystem.Api.Models.Enums;
 
-namespace TicketSystem.Api.Models.DTO
+namespace TicketSystem.Api.Models.DTO.TicketDTO
 {
 	public class ReadTicketDTO
 	{

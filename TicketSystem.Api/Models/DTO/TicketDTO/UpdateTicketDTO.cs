@@ -1,8 +1,8 @@
 ﻿using TicketSystem.Api.Models.Enums;
 
-namespace TicketSystem.Api.Models.DTO
+namespace TicketSystem.Api.Models.DTO.TicketDTO
 {
-	public class AddTicketDTO
+	public class UpdateTicketDTO
 	{
 		public string Title { get; set; }
 		public string Description { get; set; }
