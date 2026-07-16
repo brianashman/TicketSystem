@@ -11,3 +11,5 @@ Simple ticket management system built with ASP.NET Core Web API and .NET MAUI.
 - Authentication and roles
 - Comments and assignment
 - MAUI UI
+
+❌ Project discontinued — architecture no longer aligned with goals.
